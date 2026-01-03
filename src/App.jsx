@@ -2,6 +2,7 @@ import { useState } from "react";
 import CardDetail from "./components/CardDetail";
 import Cart from "./components/Cart";
 import CartModal from "./components/CartModal";
+import AddForm from "./components/AddCartItem";
 
 function App() {
   const [items, setItems] = useState([
@@ -92,6 +93,17 @@ function App() {
     setCartItems([]);
   };
 
+  const handleAddNewItem = (newData) => {
+    const newItem = {
+      id: items.length + 1,
+      name: newData.name,
+      price: parseFloat(newData.price),
+      isAvailable: newData.isAvailable,
+      quantity: 1,
+    };
+    setItems((prevItems) => [...prevItems, newItem]);
+  };
+
   return (
     <>
       <div className="container mt-5">
@@ -114,6 +126,7 @@ function App() {
             <p> Proceeding to checkout page. </p>
           </CartModal>
         )}
+        <AddForm onAddNewItem={handleAddNewItem} />
       </div>
     </>
   );
