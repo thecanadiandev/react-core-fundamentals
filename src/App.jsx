@@ -1,3 +1,5 @@
+import CartItem from "./components/CartItem";
+
 function App() {
   const title = "Shopping Cart";
   const items = [
@@ -20,22 +22,7 @@ function App() {
           <div className="card-body">
             <ul className="list-group list-group-flush mb-3">
               {items.map((item, index) => (
-                <li
-                  key={index}
-                  className={`list-group-item d-flex justify-content-between align-items-center ${
-                    item.isAvailable ? "" : "text-muted"
-                  }`}
-                >
-                  <span>{item.name}</span>
-                  <div className="d-flex align-items-center gap-2">
-                    <span className="badge bg-secondary rounded-pill">
-                      ${item.price.toFixed(2)}
-                    </span>
-                    <button onClick={() => handleAddToCart(item)} disabled={!item.isAvailable} className={item.isAvailable ? 'btn btn-sm btn-success' : 'btn btn-sm btn-secondary'}>
-                      +
-                    </button>
-                  </div>
-                </li>
+                <CartItem key={index} item={item} handleAddToCart={handleAddToCart} /> 
               ))}
             </ul>
           </div>
