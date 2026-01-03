@@ -4,31 +4,8 @@ import Cart from "./Cart";
 import CartModal from "./CartModal";
 import AddForm from "./AddCartItem";
 
-function CartContainer() {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      name: "Wireless Headphones",
-      price: 59.99,
-      isAvailable: true,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: "USB-C Cable",
-      price: 12.99,
-      isAvailable: false,
-      quantity: 1,
-    },
-    { id: 3, name: "Phone Case", price: 24.99, isAvailable: true, quantity: 1 },
-    {
-      id: 4,
-      name: "Screen Protector",
-      price: 9.99,
-      isAvailable: true,
-      quantity: 1,
-    },
-  ]);
+function CartContainer({ cartData }) {
+  const [items, setItems] = useState([...cartData]);
   const [cartItems, setCartItems] = useState(() => {
     const storedCart = localStorage.getItem("cartItems");
     return storedCart ? JSON.parse(storedCart) : [];
