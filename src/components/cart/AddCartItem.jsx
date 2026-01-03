@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import Input from "./Input";
-import Checkbox from "./Checkbox";
+import Input from "../ui/Input";
+import Checkbox from "../ui/Checkbox";
 
 export default function AddForm({ onAddNewItem }) {
   const {
