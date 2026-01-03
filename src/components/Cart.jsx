@@ -1,24 +1,10 @@
 import { useState } from "react";
 import CartItem from "./CartItem";
 
-const Cart = () => {
-  const [items, setItems] = useState([
-    { name: "Wireless Headphones", price: 59.99, isAvailable: true },
-    { name: "USB-C Cable", price: 12.99, isAvailable: false },
-    { name: "Phone Case", price: 24.99, isAvailable: true },
-    { name: "Screen Protector", price: 9.99, isAvailable: true },
-  ]);
+const Cart = ({ items, onAddToCart, onAddNewItem, onDeleteFromCart, onIncreaseQuantity, onDecreaseQuantity, onCheckout }) => {
+  
   const [title] = useState("Shopping Cart"); // optional to use this as a state
-  const handleAddToCart = (item) => {
-    console.log(`Added ${item.name} to cart.`);
-  };
-
-  const addNewItem = () => {
-    setItems((prevItems) => [
-      ...prevItems,
-      { name: "Gorilla glass", price: 19.99, isAvailable: true },
-    ]);
-  }
+  
 
   return (
     <div>
@@ -32,11 +18,15 @@ const Cart = () => {
               <CartItem
                 key={index}
                 item={item}
-                handleAddToCart={handleAddToCart}
+                onAddToCart={onAddToCart}
+                onDeleteFromCart={onDeleteFromCart}
+                onIncreaseQuantity={onIncreaseQuantity}
+                onDecreaseQuantity={onDecreaseQuantity}
+                onCheckout={onCheckout}
               />
             ))}
           </ul>
-          <button onClick={addNewItem} className="btn btn-success w-100">Add Item</button>
+          <button onClick={onAddNewItem} className="btn btn-success w-100">Add Item</button>
         </div>
       </div>
     </div>

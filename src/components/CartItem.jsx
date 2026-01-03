@@ -1,6 +1,6 @@
 import React from "react";
 
-const CartItem = ({ item, handleAddToCart }) => {
+const CartItem = ({ item, onAddToCart }) => {
   return (
     <div>
       <li
@@ -14,7 +14,7 @@ const CartItem = ({ item, handleAddToCart }) => {
             ${item.price.toFixed(2)}
           </span>
           <button
-            onClick={() => handleAddToCart(item)}
+            onClick={() => onAddToCart(item)}
             disabled={!item.isAvailable}
             className={
               item.isAvailable
