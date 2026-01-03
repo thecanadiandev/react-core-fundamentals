@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="container mt-5">
+        <div className="card shadow-sm">
+          <div className="card-header bg-primary text-white">
+            <h4 className="mb-0">Shopping Cart</h4>
+          </div>
+          <div className="card-body">
+            <ul className="list-group list-group-flush mb-3">
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+                <span>Wireless Headphones</span>
+                <div className="d-flex align-items-center gap-2">
+                  <span className="badge bg-secondary rounded-pill">
+                    $59.99
+                  </span>
+                  <button className="btn btn-sm btn-outline-success">+</button>
+                </div>
+              </li>
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+                <span>USB-C Cable</span>
+                <div className="d-flex align-items-center gap-2">
+                  <span className="badge bg-secondary rounded-pill">
+                    $12.99
+                  </span>
+                  <button className="btn btn-sm btn-outline-success">+</button>
+                </div>
+              </li>
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+                <span>Phone Case</span>
+                <div className="d-flex align-items-center gap-2">
+                  <span className="badge bg-secondary rounded-pill">
+                    $24.99
+                  </span>
+                  <button className="btn btn-sm btn-outline-success">+</button>
+                </div>
+              </li>
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+                <span>Screen Protector</span>
+                <div className="d-flex align-items-center gap-2">
+                  <span className="badge bg-secondary rounded-pill">$9.99</span>
+                  <button className="btn btn-sm btn-outline-success">+</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
