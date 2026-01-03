@@ -1,29 +1,22 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function AddForm({ onAddNewItem }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    price: "",
-    isAvailable: true,
-  });
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onAddNewItem(formData);
-
-    setFormData({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    defaultValues: {
       name: "",
       price: "",
       isAvailable: true,
-    });
+    },
+  });
+
+  const onSubmit = (data) => {
+    onAddNewItem(data);
+    reset();
   };
 
   return (
@@ -41,14 +34,22 @@ export default function AddForm({ onAddNewItem }) {
               <input
                 type="text"
                 autoComplete="off"
-                className="form-control"
+                className={`form-control ${errors.name ? "is-invalid" : ""}`}
                 id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
                 placeholder="Enter product name"
-                required
+                {...register("name", {
+                  required: "Product name is required",
+                  minLength: {
+                    value: 3,
+                    message: "Name must be at least 3 characters",
+                  },
+                })}
               />
+              {errors.name && (
+                <div className="invalid-feedback d-block">
+                  {errors.name.message}
+                </div>
+              )}
             </div>
 
             <div className="mb-3">
@@ -57,16 +58,21 @@ export default function AddForm({ onAddNewItem }) {
               </label>
               <input
                 type="number"
-                className="form-control"
+                className={`form-control ${errors.price ? "is-invalid" : ""}`}
                 id="price"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
+                {...register("price", {
+                  required: "Price is required",
+                  min: { value: 0.01, message: "Price must be greater than 0" },
+                  max: { value: 10000, message: "Price cannot exceed $10,000" },
+                })}
                 placeholder="0.00"
                 step="0.01"
-                min="0"
-                required
               />
+              {errors.price && (
+                <div className="invalid-feedback d-block">
+                  {errors.price.message}
+                </div>
+              )}
             </div>
 
             <div className="mb-3 form-check">
@@ -74,9 +80,7 @@ export default function AddForm({ onAddNewItem }) {
                 type="checkbox"
                 className="form-check-input"
                 id="isAvailable"
-                name="isAvailable"
-                checked={formData.isAvailable}
-                onChange={handleChange}
+                {...register("isAvailable")}
               />
               <label className="form-check-label" htmlFor="isAvailable">
                 Available in Stock
@@ -86,7 +90,7 @@ export default function AddForm({ onAddNewItem }) {
             <button
               type="button"
               className="btn btn-success w-100"
-              onClick={handleSubmit}
+              onClick={handleSubmit(onSubmit)}
             >
               Add Product
             </button>
