@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router";
 import { useHttp } from "../hooks/useFetch";
+import Spinner from "../components/ui/Spinner";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -15,7 +16,7 @@ export default function ProductDetailPage() {
   if (loading) {
     return (
       <div className="container mt-5">
-        <div className="alert alert-light">Loading...</div>
+        <Spinner />
       </div>
     );
   }
