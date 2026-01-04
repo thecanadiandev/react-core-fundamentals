@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const CartItem = ({ item, onAddToCart }) => {
+const ProductItem = ({ item }) => {
   return (
     <div>
       <li
@@ -17,7 +17,6 @@ const CartItem = ({ item, onAddToCart }) => {
             ${item.price.toFixed(2)}
           </span>
           <button
-            onClick={() => onAddToCart(item)}
             disabled={!item.isAvailable}
             className={
               item.isAvailable
@@ -33,4 +32,4 @@ const CartItem = ({ item, onAddToCart }) => {
   );
 };
 
-export default CartItem;
+export default ProductItem;

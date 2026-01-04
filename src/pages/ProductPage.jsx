@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CartContainer from "./CartPage";
+import ProductDisplay from "../components/product/ProductDisplay";
 import { ProductContext } from "../context/product/ProductContext";
 
 const Product = () => {
@@ -52,7 +52,11 @@ const Product = () => {
           &gt;
         </button>
       </div>
-      <CartContainer cartData={products.data} />
+      <>
+        <div className="container mt-5">
+          <ProductDisplay items={products.data} />
+        </div>
+      </>
     </div>
   );
 };

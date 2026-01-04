@@ -28,7 +28,7 @@ export default function Login() {
           <h4 className="mb-0">Login</h4>
         </div>
         <div className="card-body">
-          <div>
+          <form>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email
@@ -73,7 +73,7 @@ export default function Login() {
                 Clear
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
