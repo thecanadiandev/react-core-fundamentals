@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CartContainer from "../cart/CartContainer";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -9,7 +10,7 @@ const Product = () => {
   const fetchProduct = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:4000/products`);
+      const response = await fetch(`${API_URL}/products`);
       if (!response.ok) {
         throw new Error("Failed to fetch product data");
       }
