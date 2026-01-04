@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
+import CartCounter from "../cart/CartCounter";
 
 const Navbar = () => {
   return (
@@ -26,9 +27,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link small" to="/cart">
-                Cart
-              </Link>
+              <CartCounter />
             </li>
           </ul>
         </div>
