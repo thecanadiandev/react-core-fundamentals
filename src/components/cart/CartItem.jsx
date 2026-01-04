@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const CartItem = ({ item, onAddToCart }) => {
   return (
@@ -8,7 +9,9 @@ const CartItem = ({ item, onAddToCart }) => {
           item.isAvailable ? "" : "text-muted"
         }`}
       >
-        <span>{item.name}</span>
+        <Link to={`/products/${item.id}`} className="text-decoration-none">
+          <span>{item.name}</span>
+        </Link>
         <div className="d-flex align-items-center gap-2">
           <span className="badge bg-secondary rounded-pill">
             ${item.price.toFixed(2)}
