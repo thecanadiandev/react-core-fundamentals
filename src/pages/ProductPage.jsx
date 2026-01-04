@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useContext } from "react";
 import CartContainer from "./CartPage";
-import { useProducts } from "../hooks/useProducts";
+import { ProductContext } from "../context/product/ProductContext";
 
 const Product = () => {
-  const [page, setPage] = useState(1);
-  const { products, loading, error } = useProducts(page);
+  const ProductCtx = useContext(ProductContext);
+  const { products, loading, error, page, setPage } = ProductCtx;
 
   const handlePrevPage = () => {
     if (products.prev) {
