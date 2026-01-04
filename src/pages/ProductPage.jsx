@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CartContainer from "../cart/CartContainer";
+import CartContainer from "./CartPage";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Product = () => {

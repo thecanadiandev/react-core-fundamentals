@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import CardDetail from "./CardDetail";
-import Cart from "./Cart";
-import CartModal from "./CartModal";
-import AddForm from "./AddCartItem";
+import CardDetail from "../components/cart/CardDetail";
+import Cart from "../components/cart/Cart";
+import CartModal from "../components/cart/CartModal";
+import AddForm from "../components/cart/AddCartItem";
 
 function CartContainer({ cartData }) {
   const [items, setItems] = useState([...cartData]);
