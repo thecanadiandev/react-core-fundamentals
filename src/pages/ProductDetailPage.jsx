@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router";
-import { useHttp } from "../hooks/useFetch";
+import { useFetch } from "../hooks/useFetch";
 import Spinner from "../components/ui/Spinner";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -11,7 +11,7 @@ export default function ProductDetailPage() {
     data: product,
     loading,
     error,
-  } = useHttp(`${API_URL}/products/${id}`);
+  } = useFetch(`${API_URL}/products/${id}`);
 
   if (loading) {
     return (

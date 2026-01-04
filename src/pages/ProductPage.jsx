@@ -6,14 +6,18 @@ const Product = () => {
   const ProductCtx = useContext(ProductContext);
   const { products, loading, error, page, setPage } = ProductCtx;
 
+  // debug logs removed
+
   const handlePrevPage = () => {
+    // Prev clicked
     if (products.prev) {
-      setPage(page - 1);
+      setPage((p) => Math.max(1, p - 1));
     }
   };
   const handleNextPage = () => {
+    // Next clicked
     if (products.next) {
-      setPage(page + 1);
+      setPage((p) => p + 1);
     }
   };
 

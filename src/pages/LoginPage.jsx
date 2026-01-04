@@ -11,8 +11,7 @@ export default function Login() {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    console.log("Email:", email);
-    console.log("Password:", password);
+    // handle login
   };
 
   const handleClear = () => {

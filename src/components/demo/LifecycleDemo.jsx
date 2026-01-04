@@ -6,33 +6,33 @@ export default function LifecycleDemo() {
 
   // 1. Component Mount - Runs once when component first renders
   useEffect(() => {
-    console.log("1. Component Mounted - runs once");
+    // Component mounted
 
     setTimeout(() => {
       setData("Data loaded from API");
     }, 2000);
 
     return () => {
-      console.log("4. Component Unmounted - cleanup");
+      // Component unmounted - cleanup
     };
   }, []); // Empty dependency array = runs once on mount
 
   // 2. Component Update - Runs when count changes
   useEffect(() => {
-    console.log("2.Count changed:", count);
+    // Count changed
 
     if (count > 0) {
       document.title = `Count: ${count}`;
     }
 
     return () => {
-      console.log("5. Cleanup before next count update");
+      // Cleanup before next count update
     };
   }, [count]); // Runs whenever count changes
 
   // 3. Runs on Every Render
   useEffect(() => {
-    console.log("3.Component rendered or updated");
+    // Component rendered or updated
   }); // No dependency array = runs on every render
 
   return (

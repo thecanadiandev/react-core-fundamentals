@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const ProductItem = ({ item }) => {
+const ProductItem = ({ item, addItemsToCart }) => {
   return (
     <div>
       <li
@@ -18,6 +18,7 @@ const ProductItem = ({ item }) => {
           </span>
           <button
             disabled={!item.isAvailable}
+            onClick={() => addItemsToCart(item.id, 1)}
             className={
               item.isAvailable
                 ? "btn btn-sm btn-success"
