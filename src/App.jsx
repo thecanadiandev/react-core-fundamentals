@@ -6,12 +6,15 @@ import LoginPage from "./pages/LoginPage";
 import CartPage from "./pages/CartPage";
 import NotFound from "./pages/NotFound";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import { useSelector } from "react-redux";
 
 function App() {
+  const count = useSelector((state) => state.value);
   return (
     <>
       <Navbar />
       <div className="container mt-5">
+        <p> The count is {count} </p>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductPage />} />

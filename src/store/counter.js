@@ -11,7 +11,7 @@ function counterReducer(state = { value: 0 }, action) {
   }
 }
 
-let store = createStore(counterReducer);
+export const store = createStore(counterReducer);
 
 store.subscribe(() => console.log(store.getState()))
 

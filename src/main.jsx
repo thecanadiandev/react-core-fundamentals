@@ -6,13 +6,17 @@ import { BrowserRouter } from "react-router";
 import ProductProvider from "./context/product/ProductProvider.jsx";
 import CartProvider from "./context/cart/CartProvider.jsx";
 import "./store/counter";
+import { Provider } from "react-redux";
+import { store } from "./store/counter";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <ProductProvider>
         <CartProvider>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </CartProvider>
       </ProductProvider>
     </BrowserRouter>
